@@ -2,118 +2,81 @@
 
 This document contains detailed manual test cases for a calculator that supports add, subtract, multiply, divide operations, including valid and invalid input scenarios.
 
----
+1. ✅ Valid Input Test Cases
 
-## ✅ Valid Input Test Cases
+| Test Case ID   | Description               | Preconditions       | Test Steps          | Expected Result |
+| -------------- | ------------------------- | ------------------- | ------------------- | --------------- |
+| TC\_VALID\_001 | Add two positive integers | Calculator is ready | Enter `5 + 3 =`     | `8`             |
+| TC\_VALID\_002 | Subtract two numbers      | Calculator is ready | Enter `10 - 4 =`    | `6`             |
+| TC\_VALID\_003 | Multiply two numbers      | Calculator is ready | Enter `6 * 7 =`     | `42`            |
+| TC\_VALID\_004 | Divide two numbers        | Calculator is ready | Enter `20 / 5 =`    | `4`             |
+| TC\_VALID\_005 | Use decimal values        | Calculator is ready | Enter `5.5 + 2.3 =` | `7.8`           |
 
-### Test Case ID: TC_CALC_001
-**Test Description:** Add two positive integers  
-**Preconditions:** Calculator is open and functional  
-**Test Steps:**
-1. Enter `5`
-2. Press `+`
-3. Enter `3`
-4. Press `=`
-**Expected Result:** Displayed result is `8`
 
----
+2. ➗ BODMAS Rule Test Cases
 
-### Test Case ID: TC_CALC_002
-**Test Description:** Subtract a negative number from a positive number  
-**Preconditions:** Calculator is ready  
-**Test Steps:**
-1. Enter `7`
-2. Press `-`
-3. Enter `-4`
-4. Press `=`
-**Expected Result:** Displayed result is `11`
+| Test Case ID   | Description                  | Preconditions       | Test Steps                                               | Expected Result |
+|----------------|------------------------------|---------------------|-----------------------------------------------------------|-----------------|
+| TC_BODMAS_001  | Multiply before Add (BODMAS) | Calculator is ready | Enter `5 + 3 * 2 =`                                       | 11              |
+| TC_BODMAS_002  | Brackets handling            | Calculator is ready | Enter `(5 + 3) * 2 =` (if calculator supports brackets)   | 16              |
+| TC_BODMAS_003  | Mixed operations             | Calculator is ready | Enter `10 - 2 + 3 * 4 =`                                  | 20              |
 
----
 
-### Test Case ID: TC_CALC_003
-**Test Description:** Multiply two decimal numbers  
-**Preconditions:** Calculator is working  
-**Test Steps:**
-1. Enter `1.5`
-2. Press `×`
-3. Enter `2.0`
-4. Press `=`
-**Expected Result:** Displayed result is `3.0`
+3. ❌ Invalid Input Test Cases
 
----
+| Test Case ID     | Description               | Preconditions       | Test Steps             | Expected Result    |
+| ---------------- | ------------------------- | ------------------- | ---------------------- | ------------------ |
+| TC\_INVALID\_001 | Input alphabet characters | Calculator is ready | Try entering `A + B =` | Show error/invalid |
+| TC\_INVALID\_002 | Special characters        | Calculator is ready | Enter `5 + $ =`        | Show error/invalid |
+| TC\_INVALID\_003 | Division by zero          | Calculator is ready | Enter `5 / 0 =`        | Show error or `∞`  |
 
-### Test Case ID: TC_CALC_004
-**Test Description:** Divide a number by another  
-**Preconditions:** Calculator is responsive  
-**Test Steps:**
-1. Enter `10`
-2. Press `÷`
-3. Enter `2`
-4. Press `=`
-**Expected Result:** Displayed result is `5`
 
----
+4. ⚠️ Edge Case Test Cases
 
-### Test Case ID: TC_CALC_005
-**Test Description:** Apply BODMAS (e.g., 2 + 3 × 4)  
-**Preconditions:** Calculator supports operator precedence  
-**Test Steps:**
-1. Enter `2`
-2. Press `+`
-3. Enter `3`
-4. Press `×`
-5. Enter `4`
-6. Press `=`
-**Expected Result:** Displayed result is `14`
 
----
+| Test Case ID  | Description                 | Preconditions       | Test Steps                | Expected Result |
+| ------------- | --------------------------- | ------------------- | ------------------------- | --------------- |
+| TC\_EDGE\_001 | Large number multiplication | Calculator is ready | Enter `99999 * 99999 =`   | `9999800001`    |
+| TC\_EDGE\_002 | Negative number addition    | Calculator is ready | Enter `-5 + -3 =`         | `-8`            |
+| TC\_EDGE\_003 | Subtracting from zero       | Calculator is ready | Enter `0 - 10 =`          | `-10`           |
+| TC\_EDGE\_004 | Small decimals              | Calculator is ready | Enter `0.0001 + 0.0002 =` | `0.0003`        |
+| TC\_EDGE\_005 | Multiply with zero          | Calculator is ready | Enter `123456 * 0 =`      | `0`             |
 
-## ❌ Invalid Input Test Cases
 
-### Test Case ID: TC_CALC_006
-**Test Description:** Division by zero  
-**Preconditions:** Calculator is running  
-**Test Steps:**
-1. Enter `9`
-2. Press `÷`
-3. Enter `0`
-4. Press `=`
-**Expected Result:** Error message or “Cannot divide by zero”
+✅ Status Overview
 
----
+| Test Case ID         | Status                |
+| -------------------- | --------------------- |
+| TC\_VALID\_001–005   | ✅ Pass                |
+| TC\_BODMAS\_001–003  | ✅ Pass                |
+| TC\_INVALID\_001–003 | ❌ Error (as expected) |
+| TC\_EDGE\_001–005    | ✅ Pass                |
 
-### Test Case ID: TC_CALC_007
-**Test Description:** Input non-numeric characters  
-**Preconditions:** Keyboard input allowed  
-**Test Steps:**
-1. Type `abc` into input  
-**Expected Result:** Calculator should reject input or show error
 
----
 
-### Test Case ID: TC_CALC_008
-**Test Description:** Use multiple operators in a row  
-**Preconditions:** Calculator is initialized  
-**Test Steps:**
-1. Enter `5`
-2. Press `+` twice
-3. Enter `2`
-4. Press `=`
-**Expected Result:** Calculator should ignore extra `+` or show error
 
----
 
-### Test Case ID: TC_CALC_009
-**Test Description:** Input special characters  
-**Preconditions:** Calculator accepts typed input  
-**Test Steps:**
-1. Type `@#$%^`
-**Expected Result:** Error or no action should occur
 
----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 📌 Notes
 - All tests are executed manually on [https://www.online-calculator.com/full-screen-calculator/](https://www.online-calculator.com/full-screen-calculator/)
 - Results are noted as Pass/Fail during execution
+
 
 ---
